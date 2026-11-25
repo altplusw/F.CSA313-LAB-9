@@ -104,4 +104,15 @@ class ScholarshipCalculatorTest {
     void averagesFourGrades() {
         assertEquals(2.5, calculator.gpa(new double[]{95, 85, 75, 65}));
     }
+
+    @Test
+    void exactlySixtyIsD() {
+        assertEquals("D", calculator.letterGrade(60));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"59.99,F", "69.99,D", "0,F", "100,A", "89.99,B", "90,A"})
+    void gradesOtherBoundaryScores(double score, String expected) {
+        assertEquals(expected, calculator.letterGrade(score));
+    }
 }
