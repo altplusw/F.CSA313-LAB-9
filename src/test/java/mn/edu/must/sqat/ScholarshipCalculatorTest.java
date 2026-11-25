@@ -94,4 +94,14 @@ class ScholarshipCalculatorTest {
     void lowGpaGetsNoScholarship() {
         assertEquals(0, calculator.scholarship(2.9, 18, false));
     }
+
+    @Test
+    void averagesASingleGrade() {
+        assertEquals(4.0, calculator.gpa(new double[]{95}));
+    }
+
+    @Test
+    void averagesFourGrades() {
+        assertEquals(2.5, calculator.gpa(new double[]{95, 85, 75, 65}));
+    }
 }
